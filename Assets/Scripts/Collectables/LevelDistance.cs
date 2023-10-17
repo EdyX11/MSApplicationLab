@@ -8,6 +8,7 @@ public class LevelDistance : MonoBehaviour
     public GameObject distDisplay;
     public int distRun;
     public bool addingDist = false;
+    public GameObject distEndDisplay;
 
     public float distDelay = 0.35f;
     
@@ -24,6 +25,7 @@ public class LevelDistance : MonoBehaviour
     {
         distRun += 1;
         distDisplay.GetComponent<Text>().text = ""+distRun;
+        distEndDisplay.GetComponent<Text>().text = "" + distRun;
         yield return new WaitForSeconds(distDelay);
         addingDist = false;
     }
