@@ -32,16 +32,27 @@ The assets used in this game will will be obtained from the Unity Assets Store (
 
 	Some of the core mechanics of our game will be as follows:
 •	Continuous Forward Movement: The player's character automatically moves forward without input.
+
 •	Player Controls: Players have control over the character's actions as follows:
+
 o	Swipe left/right: Character moves left / right
+
 o	Swipe up: Character jumps
+
 o	Swipe down: Character slides
+
 •	Obstacles:The game features various obstacles, such as barriers, trees, rocks, and moving hazards. Players must navigate these obstacles by using their control inputs at the right time.
+
 •	Collectibles: Players can collect items like coins or gems. These collectibles can be used to purchase in-game items or upgrades. They also contribute to the player's score.
+
 •	Score System: Players earn points based on their performance. Points are awarded for distance covered, collectibles collected.
+
 •	In-Game Store: Players can spend in-game currency to purchase upgrades or characters.
+
 •	Character Customization: Players will be able to create their own custom character inside the game.
+
 •	Multiple play maps: Players will be able to enjoy multiple unique environments where the can earn coins and have fun, each with their own special challanges. ( for example: Desert, City, Jungle etc)
+
 
 
 
