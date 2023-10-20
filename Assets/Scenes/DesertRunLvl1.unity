@@ -15277,6 +15277,7 @@ MonoBehaviour:
   liveDist: {fileID: 1289405882}
   endScreen: {fileID: 181112106}
   fadeOut: {fileID: 1100745449}
+  BGM: {fileID: 1544265760}
 --- !u!1 &1795865375
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class EndRunSequence : MonoBehaviour
     public GameObject liveDist;
     public GameObject endScreen;
     public GameObject fadeOut;
+    public  AudioSource BGM;
     void Start()
 
     {
@@ -24,5 +25,6 @@ public class EndRunSequence : MonoBehaviour
         endScreen.SetActive(true);
         yield return new WaitForSeconds(3);
         fadeOut.SetActive(true);
+        BGM.Stop();
     }
 }
