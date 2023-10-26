@@ -5,13 +5,21 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
 
-    public float moveSpeed = 5;
+    public float moveSpeed = 10;
     public float leftRightSpeed = 4;
     static public bool canMove= false;
     public bool isJumping = false;
     public bool comingDown = false;
     public GameObject playerObject;
+    // Variables for gradual speed increase
+    public float initialMoveSpeed = 10.0f;
+    public float maxMoveSpeed = 20.0f;
+    private float currentMoveSpeed;
 
+    void Start()
+    {
+        currentMoveSpeed = initialMoveSpeed; // Set the initial move speed
+    }
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
@@ -44,7 +52,14 @@ public class PlayerMove : MonoBehaviour
                 }
 
             }
+            if (currentMoveSpeed < maxMoveSpeed)
+            {
+                currentMoveSpeed += Time.deltaTime; // You can adjust the rate of increase as needed
+            }
+            Debug.Log("Current Move Speed: " + currentMoveSpeed);
         }
+
+
 
         if(isJumping == true)
         {

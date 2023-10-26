@@ -14,12 +14,14 @@ public class Destroyer : MonoBehaviour
 
     IEnumerator DestroyClone()
     {
-        yield return new WaitForSeconds(65);
-        if(parentName == "Section(Clone)")
+        Debug.Log("DestroyClone started");
+        yield return new WaitForSeconds(50);
+        if (parentName == "Section(Clone)")
         {
+             Debug.Log("Destroying: " + gameObject.name); 
             Destroy(gameObject);
-
         }
-
     }
+
+
 }
