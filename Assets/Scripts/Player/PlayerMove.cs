@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,7 +52,7 @@ public class PlayerMove : MonoBehaviour
             {
                 transform.Translate(Vector3.up * Time.deltaTime * 3, Space.World);// aici 3 sau -3 dicteaza cat de sus se sare - asta poate fi o variabila si putem face super jump power up
             }
-            else
+            if (comingDown == true)
             {
                 transform.Translate(Vector3.up * Time.deltaTime * -3, Space.World);
             }
