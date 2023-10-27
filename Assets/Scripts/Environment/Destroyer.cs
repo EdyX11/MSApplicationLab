@@ -15,7 +15,7 @@ public class Destroyer : MonoBehaviour
     IEnumerator DestroyClone()
     {
         Debug.Log("DestroyClone started");
-        yield return new WaitForSeconds(50);
+        yield return new WaitForSeconds(45);
         if (parentName == "Section(Clone)")
         {
              Debug.Log("Destroying: " + gameObject.name); 

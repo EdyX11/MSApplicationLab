@@ -5,21 +5,16 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
 
-    public float moveSpeed = 10;
+    public float moveSpeed = 5.0f;
     public float leftRightSpeed = 4;
     static public bool canMove= false;
     public bool isJumping = false;
     public bool comingDown = false;
     public GameObject playerObject;
-    // Variables for gradual speed increase
-    public float initialMoveSpeed = 10.0f;
     public float maxMoveSpeed = 20.0f;
-    private float currentMoveSpeed;
+    
 
-    void Start()
-    {
-        currentMoveSpeed = initialMoveSpeed; // Set the initial move speed
-    }
+
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
@@ -52,11 +47,10 @@ public class PlayerMove : MonoBehaviour
                 }
 
             }
-            if (currentMoveSpeed < maxMoveSpeed)
-            {
-                currentMoveSpeed += Time.deltaTime; // You can adjust the rate of increase as needed
-            }
-            Debug.Log("Current Move Speed: " + currentMoveSpeed);
+            /* move speed increase with time, need to lower it to chunk spawn 
+            if(moveSpeed < maxMoveSpeed)
+            moveSpeed = moveSpeed + Time.deltaTime;
+            */
         }
 
 
@@ -65,23 +59,23 @@ public class PlayerMove : MonoBehaviour
         {
             if(comingDown == false)
             {
-                transform.Translate(Vector3.up * Time.deltaTime * 3, Space.World);// aici 3 sau -3 dicteaza cat de sus se sare - asta poate fi o variabila si putem face super jump power up
+                transform.Translate(Vector3.up * Time.deltaTime * 4, Space.World);// aici 3 sau -3 dicteaza cat de sus se sare - asta poate fi o variabila si putem face super jump power up
             }
             if (comingDown == true)
             {
-                transform.Translate(Vector3.up * Time.deltaTime * -3, Space.World);
+                transform.Translate(Vector3.up * Time.deltaTime * -4, Space.World);
             }
         }
     }
 
         IEnumerator JumpSequence()
         {
-            yield return new WaitForSeconds(0.45f);
+            yield return new WaitForSeconds(0.5f);
             comingDown=true;
-            yield return new WaitForSeconds(0.45f);
+            yield return new WaitForSeconds(0.5f);
             isJumping=false;
             comingDown=false;
             playerObject.GetComponent <Animator>().Play("Standard Run");
-
-        }
+           
+    }
 }
