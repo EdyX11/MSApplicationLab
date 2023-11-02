@@ -21,7 +21,7 @@ public class ObstacleCollision : MonoBehaviour
         levelControl.GetComponent<LevelDistance>().enabled = false;
         crashThud.Play();
         mainCam.GetComponent<Animator>().enabled = true;
-
        levelControl.GetComponent<EndRunSequence>().enabled = true;
+       
     }
 }

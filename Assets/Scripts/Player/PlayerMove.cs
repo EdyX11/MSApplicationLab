@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
         if(canMove == true)
         {
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow ) || SwipeManager.swipeLeft)
             {
                 if (this.gameObject.transform.position.x > LevelBoundary.leftSide)
                 {
@@ -28,7 +28,7 @@ public class PlayerMove : MonoBehaviour
                 }
 
             }
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || SwipeManager.swipeRight)
             {
                 if (this.gameObject.transform.position.x < LevelBoundary.rightSide)
                 {
@@ -37,13 +37,14 @@ public class PlayerMove : MonoBehaviour
             }
             
 
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || SwipeManager.swipeUp)
             {
                 if( isJumping == false )
                 {
                     isJumping = true;
                     playerObject.GetComponent <Animator>().Play("Jump");
                     StartCoroutine(JumpSequence());
+                    //playerObject.GetComponent <Animator>().Play("Standard Run");
                 }
 
             }
