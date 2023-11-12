@@ -57,12 +57,14 @@ o	Swipe down: Character slides
 
 
 The following images depict a few of the functionalities:
- ![mmenu](https://github.com/EdyX11/MSApplicationLab/assets/101589800/deeb4612-31dc-4f5c-b79e-31b584332440)
+ ![image](https://github.com/EdyX11/MSApplicationLab/assets/101060269/848b49ee-ab51-4428-899b-6ca3c2f1daed)
+
 
 Main Menu
 
 
- ![sttart](https://github.com/EdyX11/MSApplicationLab/assets/101589800/18d33bc5-a59d-4f76-99ad-fa9bc4173a61)
+![image](https://github.com/EdyX11/MSApplicationLab/assets/101060269/c83abaf7-0e4f-43d5-a89d-2262b03405d1)
+
 
 Start of the run – Game view
 
@@ -77,10 +79,6 @@ End-run Game view
  ![cnt](https://github.com/EdyX11/MSApplicationLab/assets/101589800/afbf97b9-b7e2-44e6-a8f7-d593dc0fd8f4)
 
 Coins & Distance counters
-
- ![edit](https://github.com/EdyX11/MSApplicationLab/assets/101589800/d67a4e28-5a31-47e3-a918-84eaec181028)
-
-Character Customization Menu
 
 
 
