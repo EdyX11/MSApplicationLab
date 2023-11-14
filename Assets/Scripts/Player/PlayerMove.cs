@@ -75,8 +75,8 @@ public class PlayerMove : MonoBehaviour
 
        IEnumerator JumpSequence()
 {
-    float jumpTime = 1.1f; // Adjust this value based on your needs
-    float jumpHeight = 3.0f; // Adjust this value based on your needs
+    float jumpTime = 1.1f; 
+    float jumpHeight = 2.0f; 
 
     float elapsedTime = 0f;
     while (elapsedTime < jumpTime)
