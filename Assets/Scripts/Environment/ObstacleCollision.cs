@@ -15,6 +15,7 @@ public class ObstacleCollision : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         //coinFX.Play();
+        Debug.Log("charname: " + charModel); 
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
         thePlayer.GetComponent<PlayerMove>().enabled = false;
         charModel.GetComponent<Animator>().Play("Stumble Backwards");
