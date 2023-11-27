@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-
+    public GameObject[] characters;
+    public int currentChar_index;
     public float moveSpeed = 5.0f;
     public float leftRightSpeed = 4;
     static public bool canMove= false;
     public bool isJumping = false;
     public bool comingDown = false;
-    public GameObject playerObject;
+    //public GameObject playerObject;
     public float maxMoveSpeed = 20.0f;
     public float initialYPosition;
     
     void Start()
     {
         initialYPosition=transform.position.y;
+        currentChar_index=PlayerPrefs.GetInt("Selected Charachter", 0);
     }
 
     void Update()
@@ -46,7 +48,7 @@ public class PlayerMove : MonoBehaviour
                 if( isJumping == false )
                 {
                     isJumping = true;
-                    playerObject.GetComponent <Animator>().Play("Jump");
+                    characters[currentChar_index].GetComponent <Animator>().Play("Jump");
                     StartCoroutine(JumpSequence());
                     //playerObject.GetComponent <Animator>().Play("Standard Run");
                 }
@@ -95,6 +97,6 @@ public class PlayerMove : MonoBehaviour
     }
 
     isJumping = false;
-    playerObject.GetComponent<Animator>().Play("Standard Run");
+    characters[currentChar_index].GetComponent<Animator>().Play("Standard Run");
 }
 }
