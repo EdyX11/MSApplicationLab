@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuFunction : MonoBehaviour
+public class MainMenuFunctionality : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public void PlayGame() 
+    // This method is called when the "Play" button is clicked in the main menu
+    public void PlayGame()
     {
         SceneManager.LoadScene(1);
     }
+
 }
