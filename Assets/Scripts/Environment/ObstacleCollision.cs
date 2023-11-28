@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class ObstacleCollision : MonoBehaviour
 {
-    //public AudioSource coinFX;
     public GameObject thePlayer;
-    //public GameObject charModel;
     public GameObject[] characters;
     public int currentChar_index;
     public AudioSource crashThud;
@@ -15,22 +13,56 @@ public class ObstacleCollision : MonoBehaviour
 
     void Start()
     {
-
-        currentChar_index=PlayerPrefs.GetInt("Selected Charachter", 0);
-
+        currentChar_index = PlayerPrefs.GetInt("Selected Charachter", 0);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        //coinFX.Play();
-        Debug.Log("charname: " + characters[currentChar_index]); 
+        Debug.Log("Collision detected with " + other.gameObject.name);
+
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
         thePlayer.GetComponent<PlayerMove>().enabled = false;
-        characters[currentChar_index].GetComponent<Animator>().Play("Stumble Backwards");
+
+        if (PlayerMove.isJumping)
+        {
+            StartCoroutine(StumbleAfterFall());
+        }
+        else
+        {
+            PlayStumbleAnimation();
+        }
+    }
+
+    IEnumerator StumbleAfterFall()
+    {
+        yield return new WaitForSeconds(0.2f); // Adjust the time as needed
+
+        PlayStumbleAnimation();
+    }
+
+    void PlayStumbleAnimation()
+    {
+        if (characters[currentChar_index] != null)
+        {
+            Animator charAnimator = characters[currentChar_index].GetComponent<Animator>();
+            if (charAnimator != null)
+            {
+                charAnimator.Play("Stumble Backwards");
+                Debug.Log("Playing Stumble Backwards animation.");
+            }
+            else
+            {
+                Debug.LogError("Animator component not found on character.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Character GameObject not found.");
+        }
+
         levelControl.GetComponent<LevelDistance>().enabled = false;
         crashThud.Play();
         mainCam.GetComponent<Animator>().enabled = true;
-       levelControl.GetComponent<EndRunSequence>().enabled = true;
-       
+        levelControl.GetComponent<EndRunSequence>().enabled = true;
     }
 }
