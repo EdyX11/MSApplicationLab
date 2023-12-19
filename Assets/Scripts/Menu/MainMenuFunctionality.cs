@@ -10,5 +10,9 @@ public class MainMenuFunctionality : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    public void GoToStore()
+    {
+        SceneManager.LoadScene(2); 
+    }
 
 }
