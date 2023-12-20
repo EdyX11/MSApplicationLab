@@ -21,8 +21,19 @@ public class ObstacleCollision : MonoBehaviour
         Debug.Log("Collision detected with " + other.gameObject.name);
 
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        PlayerMove.canMove = false;
+
         thePlayer.GetComponent<PlayerMove>().enabled = false;
 
+        Animator charAnimator = characters[currentChar_index].GetComponent<Animator>();
+        if (charAnimator != null)
+        {
+            charAnimator.Play("Happy Idle"); // Replace "Idle" with your character's idle or stopped animation state
+        }
+        else
+        {
+            Debug.LogError("Animator component not found on character.");
+        }
         if (PlayerMove.isJumping)
         {
             StartCoroutine(StumbleAfterFall());
@@ -62,6 +73,7 @@ public class ObstacleCollision : MonoBehaviour
 
         levelControl.GetComponent<LevelDistance>().enabled = false;
         crashThud.Play();
+        
         mainCam.GetComponent<Animator>().enabled = true;
         levelControl.GetComponent<EndRunSequence>().enabled = true;
     }
