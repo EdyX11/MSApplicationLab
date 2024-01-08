@@ -103,6 +103,16 @@ public class PlayerMove : MonoBehaviour
     {
         isMovingRight = false;
     }
+
+    public void Jump()
+    {
+        if (!isJumping)
+        {
+            isJumping = true;
+            characters[currentChar_index].GetComponent<Animator>().Play("Jump");
+            StartCoroutine(JumpSequence());
+        }
+    }
     IEnumerator JumpSequence()
 {
     float jumpTime = 1.1f; 
