@@ -11,10 +11,13 @@ public class PlayerMove : MonoBehaviour
     static public bool canMove= false;
    static public bool isJumping = false;
     public bool comingDown = false;
-    //public GameObject playerObject;
+ 
+
     public float maxMoveSpeed = 20.0f;
     public float initialYPosition;
-    
+
+    private bool isMovingLeft = false;
+    private bool isMovingRight = false;
     void Start()
     {
         initialYPosition=transform.position.y;
@@ -24,58 +27,83 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Space.World);
-        if(canMove == true)
+
+        if (canMove)
         {
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow )/*|| SwipeManager.swipeLeft*/)
+            if (isMovingLeft || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
-                if (this.gameObject.transform.position.x > LevelBoundary.leftSide)
-                {
-                    transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
-                }
-
+                MoveLeft();
             }
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) /*|| SwipeManager.swipeRight*/)
+
+            if (isMovingRight || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                if (this.gameObject.transform.position.x < LevelBoundary.rightSide)
-                {
-                    transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed * -1);
-                }
+                MoveRight();
             }
-            
 
+            // Handle Jumping Logic
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) /*|| SwipeManager.swipeUp*/)
             {
-                if( isJumping == false )
+                if (!isJumping)
                 {
                     isJumping = true;
-                    characters[currentChar_index].GetComponent <Animator>().Play("Jump");
+                    characters[currentChar_index].GetComponent<Animator>().Play("Jump");
                     StartCoroutine(JumpSequence());
-                    //playerObject.GetComponent <Animator>().Play("Standard Run");
                 }
-
             }
-            /* move speed increase with time, need to lower it to chunk spawn 
-            if(moveSpeed < maxMoveSpeed)
-            moveSpeed = moveSpeed + Time.deltaTime;
-            */
-        }
 
-
-
-        if(isJumping == true)
-        {
-            if(comingDown == false)
+            // Handle Jump Movement
+            if (isJumping)
             {
-                transform.Translate(Vector3.up * Time.deltaTime * 4, Space.World);
+                if (!comingDown)
+                {
+                    transform.Translate(Vector3.up * Time.deltaTime * 4, Space.World);
+                }
+                else
+                {
+                    transform.Translate(Vector3.down * Time.deltaTime * 4, Space.World);
+                }
             }
-            if (comingDown == true)
-            {
-                transform.Translate(Vector3.up * Time.deltaTime * -4, Space.World);
-            }
+
+            // Additional movement logic, if any, can go here
         }
     }
 
-       IEnumerator JumpSequence()
+    private void MoveLeft()
+    {
+        if (this.gameObject.transform.position.x > LevelBoundary.leftSide)
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
+        }
+    }
+
+    private void MoveRight()
+    {
+        if (this.gameObject.transform.position.x < LevelBoundary.rightSide)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * leftRightSpeed);
+        }
+    }
+
+    public void StartMovingLeft()
+    {
+        isMovingLeft = true;
+    }
+
+    public void StopMovingLeft()
+    {
+        isMovingLeft = false;
+    }
+
+    public void StartMovingRight()
+    {
+        isMovingRight = true;
+    }
+
+    public void StopMovingRight()
+    {
+        isMovingRight = false;
+    }
+    IEnumerator JumpSequence()
 {
     float jumpTime = 1.1f; 
     float jumpHeight = 2.0f; 

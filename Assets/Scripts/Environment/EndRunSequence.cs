@@ -10,8 +10,14 @@ public class EndRunSequence : MonoBehaviour
     public GameObject endScreen;
     public GameObject fadeOut;
     public AudioSource BGM;
+    public GameObject buttonMoveLeft;  // Reference to ButtonMoveLeft
+    public GameObject buttonMoveRight; // Reference to ButtonMoveRight
+
+
 
     void Start()
+
+
     {
         StartCoroutine(EndSequence());
     }
@@ -22,6 +28,10 @@ public class EndRunSequence : MonoBehaviour
         liveCoins.SetActive(false);
         liveDist.SetActive(false);
         endScreen.SetActive(true);
+
+        // Set the movement buttons to invisible
+        buttonMoveLeft.SetActive(false);  // Hide ButtonMoveLeft
+        buttonMoveRight.SetActive(false); // Hide ButtonMoveRight
         yield return new WaitForSeconds(3);
         fadeOut.SetActive(true);
         yield return new WaitForSeconds(2);
