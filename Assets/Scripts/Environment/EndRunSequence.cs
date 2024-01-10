@@ -12,7 +12,7 @@ public class EndRunSequence : MonoBehaviour
     public AudioSource BGM;
     public GameObject buttonMoveLeft;  // Reference to ButtonMoveLeft
     public GameObject buttonMoveRight; // Reference to ButtonMoveRight
-    public GameObject jumpButtonLeft;  
+    public GameObject jumpButtonLeft;
     public GameObject jumpButtonRight;
     public GameObject pauseButton;
 
@@ -36,7 +36,7 @@ public class EndRunSequence : MonoBehaviour
         buttonMoveRight.SetActive(false);  // Hide ButtonMoveRight
         pauseButton.SetActive(false); // Hide PauseButton
         jumpButtonLeft.SetActive(false);
-        jumpButtonRight.SetActive(false); 
+        jumpButtonRight.SetActive(false);
         fadeOut.SetActive(true);
         yield return new WaitForSeconds(2);
 

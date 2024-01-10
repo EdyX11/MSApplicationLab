@@ -94,7 +94,7 @@ public class ShopManager : MonoBehaviour
             buyButton.gameObject.SetActive(true);
             buyButton.GetComponentInChildren<TextMeshProUGUI>().text = "BUY- " + p.price;
 
-            if(p.price < PlayerPrefs.GetInt("TotalCoinCount", 0))
+            if(p.price <= PlayerPrefs.GetInt("TotalCoinCount", 0))
             {
                 buyButton.interactable = true; 
             }
